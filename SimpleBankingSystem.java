@@ -84,7 +84,7 @@ class BankingSystem {
         Account newAccount = new Account(accountNumber, accountHolderName, password);
         accounts.add(newAccount);
         saveAccounts(); // Save accounts to file after creation
-        System.out.println("SimpleBankingSystem.Account created for " + accountHolderName + " with account number " + accountNumber);
+        System.out.println("Account created for " + accountHolderName + " with account number " + accountNumber);
     }
 
     public Account getAccount(String accountNumber, String password) {
@@ -99,7 +99,7 @@ class BankingSystem {
     public void displayAllAccounts() {
         System.out.println("\nAll Accounts:");
         for (Account account : accounts) {
-            System.out.println("SimpleBankingSystem.Account Number: " + account.getAccountNumber() +
+            System.out.println("Account Number: " + account.getAccountNumber() +
                     ", Holder Name: " + account.getAccountHolderName() +
                     ", Balance: $" + account.getBalance());
         }
@@ -137,15 +137,15 @@ class BankingSystem {
     }
 }
 
-public class SimpleBankingSystem {
+public class EnhancedSimpleBankingSystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BankingSystem bankingSystem = new BankingSystem();
 
         while (true) {
             System.out.println("\n--- Banking System Menu ---");
-            System.out.println("1. Create SimpleBankingSystem.Account");
-            System.out.println("2. Login to SimpleBankingSystem.Account");
+            System.out.println("1. Create Account");
+            System.out.println("2. Login to Account");
             System.out.println("3. Display All Accounts");
             System.out.println("4. Exit");
             System.out.print("Choose an option: ");
@@ -154,9 +154,9 @@ public class SimpleBankingSystem {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter SimpleBankingSystem.Account Number: ");
+                    System.out.print("Enter Account Number: ");
                     String accountNumber = scanner.nextLine();
-                    System.out.print("Enter SimpleBankingSystem.Account Holder Name: ");
+                    System.out.print("Enter Account Holder Name: ");
                     String accountHolderName = scanner.nextLine();
                     System.out.print("Enter Password: ");
                     String password = scanner.nextLine();
@@ -164,7 +164,7 @@ public class SimpleBankingSystem {
                     break;
 
                 case 2:
-                    System.out.print("Enter SimpleBankingSystem.Account Number: ");
+                    System.out.print("Enter Account Number: ");
                     accountNumber = scanner.nextLine();
                     System.out.print("Enter Password: ");
                     password = scanner.nextLine();
@@ -191,10 +191,10 @@ public class SimpleBankingSystem {
         }
     }
 
-    public static void handleAccountMenu(Account account, BankingSystem bankingSystem) {
+    private static void handleAccountMenu(Account account, BankingSystem bankingSystem) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("\n--- SimpleBankingSystem.Account Menu for " + account.getAccountHolderName() + " ---");
+            System.out.println("\n--- Account Menu for " + account.getAccountHolderName() + " ---");
             System.out.println("1. Deposit");
             System.out.println("2. Withdraw");
             System.out.println("3. Transfer Funds");
@@ -220,7 +220,7 @@ public class SimpleBankingSystem {
                     break;
 
                 case 3:
-                    System.out.print("Enter Recipient SimpleBankingSystem.Account Number: ");
+                    System.out.print("Enter Recipient Account Number: ");
                     String recipientAccountNumber = scanner.nextLine();
                     Account recipientAccount = bankingSystem.getAccount(recipientAccountNumber, account.getPassword()); // No password for recipient
                     if (recipientAccount != null) {
@@ -234,11 +234,10 @@ public class SimpleBankingSystem {
                     break;
 
                 case 4:
-                    System.out.println("SimpleBankingSystem.Account Balance: $" + account.getBalance());
+                    System.out.println("Account Balance: $" + account.getBalance());
                     break;
 
                 case 5:
-                    System.out.println("Thank you for banking with us!");
                     System.out.println("Logging out...");
                     return; // return to main menu
 
